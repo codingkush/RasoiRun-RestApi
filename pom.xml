@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.kushg</groupId>
-	<artifactId>foodbuddy-api</artifactId>
+	<artifactId>rasoiRun-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>foodbuddy-api</name>
+	<name>rasoiRun-api</name>
 	<description> Spring Boot Application for Food Delivery App</description>
 	<url/>
 	<licenses>
