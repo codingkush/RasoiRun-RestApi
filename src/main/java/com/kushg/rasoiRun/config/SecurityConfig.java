@@ -5,6 +5,7 @@ package com.kushg.rasoiRun.config;
 import com.kushg.rasoiRun.filters.JwtAuthenticationFilter;
 import com.kushg.rasoiRun.service.AppUserDetailsService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,6 +30,12 @@ import java.util.List;
 @EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConfig {
+
+    @Value("${frontend.admin.url}")
+    private String frontendAdminUrl;
+
+    @Value("${frontend.client.url}")
+    private String frontendClientUrl;
 
     private final AppUserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -59,7 +66,7 @@ public class SecurityConfig {
 
     private UrlBasedCorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("https://rasoirun-admin.netlify.app/","https://rasoirun.netlify.app/"));
+        config.setAllowedOrigins(List.of(frontendAdminUrl,frontendClientUrl));
         config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS","PATCH"));
         config.setAllowedHeaders(List.of("Authorization" , "Content-Type"));
         config.setAllowCredentials(true);
